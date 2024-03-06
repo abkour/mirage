@@ -72,8 +72,8 @@ void ResolveFmtString(std::string* str, const char** fmt_p)
             if (*(fmt + 1) == '%')
             {
                 *str += *fmt;
-                *fmt++;
-                *fmt++;
+                fmt++;
+                fmt++;
                 continue;
             }
         }
