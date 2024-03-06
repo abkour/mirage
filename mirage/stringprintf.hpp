@@ -29,11 +29,11 @@ struct FmtStruct
     int precision;
 };
 
-template<typename T, std::size_t N>
-std::size_t ARRAYSIZE(T(&t)[N])
-{
-    return N;
-}
+template<typename T>
+struct is_static_string_literal : public std::false_type {};
+
+template<std::size_t N>
+struct is_static_string_literal<const char(&)[N]> : public std::true_type {};
 
 template<typename T>
 struct is_string_literal : public std::false_type {};
@@ -86,11 +86,35 @@ std::string FloatToStringWithPrecision(float v, int precision)
     return std::string(buf, length);
 }
 
+std::string DoubleToStringWithPrecision(double v, int precision)
+{
+    double_conversion::DoubleToStringConverter doubleConverter(
+        double_conversion::DoubleToStringConverter::NO_FLAGS, "Inf", "NaN", 'e',
+        -6 /* decimal_in_shortest_low */, 9 /* decimal_in_shortest_high */,
+        5 /* max_leading_padding_zeroes_in_precision_mode */,
+        5 /*  max_trailing_padding_zeroes_in_precision_mode */);
+    char buf[64];
+    double_conversion::StringBuilder result(buf, ARRAYSIZE(buf));
+    doubleConverter.ToPrecision(v, precision, &result);
+    int length = result.position();
+    return std::string(buf, length);
+}
+
 void ResolveFmtString(std::string* str, const char** fmt_p)
 {
     const char* fmt = *fmt_p;
     while (*fmt != '\0')
     {
+        if (*fmt == '%')
+        {
+            if (*(fmt + 1) == '%')
+            {
+                *str += *fmt;
+                *fmt++;
+                *fmt++;
+                continue;
+            }
+        }
         *str += *fmt;
         fmt++;
     }
@@ -133,7 +157,7 @@ FmtStruct GetFmtSpecifier(const char* f)
             }
             else
             {
-                fmt.precision = i == 0 ? -1 : precision;
+                fmt.precision = (i == 0) ? -1 : precision;
                 break;
             }
             ++i;
@@ -141,11 +165,11 @@ FmtStruct GetFmtSpecifier(const char* f)
     }
 
     if (*f == 'd' || *f == 'i' || *f == 'o' || *f == 'u' ||
-        *f == 'x' || *f == 'X' || *f == 'd' || *f == 'f')
+        *f == 'x' || *f == 'X' || *f == 'd' || *f == 'f' || 
+        *f == 's')
     {
         fmt.specifier += *f;
         fmt.specifier_length++;
-        return fmt;
     }
 
     return fmt;
@@ -160,10 +184,18 @@ void ResolveFmtString(std::string* str, const char** fmt_p, T&& t)
     {
         if (*fmt == '%')
         {
+            if (*(fmt + 1) == '%')
+            {
+                *str += *fmt;
+                fmt++;
+                fmt++;
+                continue;
+            }
             FmtStruct f = GetFmtSpecifier(fmt+1);
             if (f.specifier == "s")
             {
-                if constexpr (is_string_literal<std::remove_reference_t<T>>::value)
+                if constexpr (is_string_literal<std::remove_reference_t<T>>::value ||
+                              is_static_string_literal<T>::value)
                 {
                     *str += t;
                     fmt++;
@@ -183,7 +215,8 @@ void ResolveFmtString(std::string* str, const char** fmt_p, T&& t)
                     fmt += f.specifier_length;
                     break;
                 }
-                else assert(false, "Expected integer specifier here!");
+                else 
+                    assert(false, "Expected integer specifier here!");
             }
             if (f.specifier == "f")
             {
@@ -199,11 +232,7 @@ void ResolveFmtString(std::string* str, const char** fmt_p, T&& t)
                     fmt += f.specifier_length;
                     break;
                 }
-                else assert(false, "Expected %f here!");
-            }
-            if (f.specifier == "d")
-            {
-                if constexpr (std::is_same_v<double, std::remove_reference_t<T>>)
+                else if constexpr (std::is_same_v<double, std::remove_reference_t<T>>)
                 {
                     if (f.precision == -1)
                         *str += DoubleToString(t);
@@ -215,7 +244,8 @@ void ResolveFmtString(std::string* str, const char** fmt_p, T&& t)
                     fmt += f.specifier_length;
                     break;
                 }
-                else assert(false, "Expected %d here!");
+                else 
+                    assert(false, "Expected %f here!");
             }
         }
         else
