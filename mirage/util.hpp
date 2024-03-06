@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MIRAGE_UTIL_HPP
+#define MIRAGE_UTIL_HPP
 #include <stdio.h>
 
 namespace mirage
@@ -13,7 +14,7 @@ std::size_t ARRAYSIZE(T(&t)[N])
 #pragma warning ( push )
 #pragma warning ( disable : 4996 )
 
-unsigned int CountDigits(int v)
+inline unsigned int CountDigits(int v)
 {
     char buf[100];
     return sprintf(buf, "%d", v);
@@ -22,3 +23,5 @@ unsigned int CountDigits(int v)
 #pragma warning ( pop )
 
 } // namespace mirage
+
+#endif MIRAGE_UTIL_HPP

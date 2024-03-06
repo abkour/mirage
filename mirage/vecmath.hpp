@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MIRAGE_VECMATH_HPP
+#define MIRAGE_VECMATH_HPP
 
 namespace mirage
 {
@@ -300,3 +301,5 @@ Vector3<T> reflect(const Vector3<T> v, const Vector3<T> n)
 }
 
 } // namespace mirage
+
+#endif MIRAGE_VECMATH_HPP
