@@ -138,17 +138,17 @@ void ResolveFmtString(std::string* str, const char** fmt_p, T&& t)
 }
 
 template<typename T>
-void StringPrintf(std::string* str, const char* fmt, T&& t)
+void StringPrintfRecursively(std::string* str, const char* fmt, T&& t)
 {
     ResolveFmtString(str, &fmt, std::forward<T>(t));
     ResolveFmtString(str, &fmt);
 }
 
 template<typename T, typename... Args>
-void StringPrintf(std::string* str, const char* fmt, T&& t, Args&&... args)
+void StringPrintfRecursively(std::string* str, const char* fmt, T&& t, Args&&... args)
 {
     ResolveFmtString(str, &fmt, std::forward<T>(t));
-    StringPrintf(str, fmt, std::forward<Args>(args)...);
+    StringPrintfRecursively(str, fmt, std::forward<Args>(args)...);
 }
     
 } // namespace detail
@@ -157,7 +157,7 @@ template<typename... Args>
 std::string StringPrintf(const char* fmt, Args&&... args)
 {
     std::string res;
-    detail::StringPrintf(&res, fmt, std::forward<Args>(args)...);
+    detail::StringPrintfRecursively(&res, fmt, std::forward<Args>(args)...);
     return res;
 }
 
