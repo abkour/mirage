@@ -1,51 +1,24 @@
 #include <cassert>
 #include <iostream>
+
 #include "stringprintf.hpp"
+#include "vecmath.hpp"
 
 template<typename T>
-T addInt(T a, T b)
+std::ostream& operator<<(std::ostream& os, mirage::Matrix33<T>& m)
 {
-    return a + b;
-}
-
-template<typename T>
-decltype(auto) ret(const char* fmt, T&& a, T&& b)
-{
-    if constexpr (std::is_integral_v<std::remove_reference_t<T>>)
-        if (*fmt == 'd') return addInt(a, b);
-        else
-        {
-            assert(false, "Wrong type specifier supplied in fmt string!");
-        }
-    else
-        return a + b;
-}
-
-template<typename T>
-struct is_string_literal : public std::false_type {};
-
-template<>
-struct is_string_literal<const char*> : public std::true_type {};
-
-template<>
-struct is_string_literal<std::string> : public std::true_type {};
-
-template<typename T>
-typename std::enable_if_t<is_string_literal<
-         std::remove_reference_t<T>>::value, void>
-printstring(T&& t)
-{
-    if constexpr (std::is_same_v<std::string, std::remove_reference_t<T>>)
-        printf("%s", t.c_str());
-    else
-        printf("%s", t);
+    os << "| " << m.d[0] << " " << m.d[1] << " " << m.d[2] << " |\n";
+    os << "| " << m.d[3] << " " << m.d[4] << " " << m.d[5] << " |\n";
+    os << "| " << m.d[6] << " " << m.d[7] << " " << m.d[8] << " |\n";
+    return os;
 }
 
 int main()
 {
-    // %.2f
-    const char* fmt = "%.01f";
-    float c = 4200.12345678;
-    auto s = mirage::StringPrintf(fmt, c);
-    fputs(s.c_str(), stdout);
+    using namespace mirage;
+    Matrix33<int> v(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    std::cout << v;
+    std::cout << "-----------\n";
+    Matrix33<int> w = Transpose(v);
+    std::cout << w << '\n';
 }
