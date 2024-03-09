@@ -41,11 +41,6 @@ struct Vector2
         if (i == 1) return y;
     }
 
-    bool IsZero() const 
-    {
-        return IsZero(x) && IsZero(y);
-    }
-
     T x, y;
 };
 
@@ -112,6 +107,12 @@ Vector2<T>& operator*=(Vector2<T>& s, const S scalar)
 }
 
 template<typename T>
+bool IsZero(const Vector2<T>& S)
+{
+    return IsZero(S.x) && IsZero(S.y);
+}
+
+template<typename T>
 T Length(const Vector2<T> s)
 {
     return std::sqrt(s.x * s.x + s.y * s.y);
@@ -155,7 +156,7 @@ struct Vector3
 
     Vector3& operator=(Vector3<T>&& v)
     {
-        x = v.y;
+        x = v.x;
         y = v.y;
         z = v.z;
         return *this;
@@ -173,11 +174,6 @@ struct Vector3
         if (i == 0) return x;
         else if (i == 1) return y;
         else if (i == 2) return z;
-    }
-
-    bool IsZero() const
-    {
-        return IsZero(x) && IsZero(y) && IsZero(z);
     }
 
     T x, y, z;
@@ -250,25 +246,31 @@ Vector3<T>& operator*=(Vector3<T>& s, const S scalar)
 }
 
 template<typename T>
-T length(const Vector3<T> s)
+bool IsZero(const Vector3<T> S)
+{
+    return IsZero(S.x) && IsZero(S.y) && IsZero(S.z);
+}
+
+template<typename T>
+T Length(const Vector3<T> s)
 {
     return std::sqrt(s.x * s.x + s.y * s.y + s.z * s.z);
 }
 
 template<typename T>
-Vector3<T> normalize(const Vector3<T> s)
+Vector3<T> Normalize(const Vector3<T> s)
 {
-    return s * (1.f / length(s));
+    return s * (1.f / Length(s));
 }
 
 template<typename T>
-T dot(const Vector3<T> s, const Vector3<T> t)
+T Dot(const Vector3<T> s, const Vector3<T> t)
 {
     return s.x * t.x + s.y * t.y + s.z * t.z;
 }
 
 template<typename T>
-Vector3<T> cross(const Vector3<T> s, const Vector3<T> t)
+Vector3<T> Cross(const Vector3<T> s, const Vector3<T> t)
 {
     return Vector3<T>(
         s.y * t.z - s.z * t.x, 
@@ -278,11 +280,11 @@ Vector3<T> cross(const Vector3<T> s, const Vector3<T> t)
 }
 
 template<typename T>
-Vector3<T> reflect(const Vector3<T> v, const Vector3<T> n)
+Vector3<T> Reflect(const Vector3<T> D, const Vector3<T> N)
 {
     // Reflects incident vector v around normal vecotr n.
     // n is expected to be normalized
-    return v - (2 * (dot(v, n) * n));
+    return (2 * (dot(D, N) * N)) - D;
 }
 
 template<typename T>
