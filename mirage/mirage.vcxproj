@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Debug\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;C:\Users\flora\ext\googletest\googletest\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Debug\x64;C:\Users\flora\ext\googletest\build\lib\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,11 +112,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>double-conversion.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>double-conversion.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,10 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_test.cpp" />
+    <ClCompile Include="stringprintf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stringprintf.hpp" />
+    <ClInclude Include="tmp_runtests_macro.hpp" />
     <ClInclude Include="util.hpp" />
+    <ClInclude Include="vecmath.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

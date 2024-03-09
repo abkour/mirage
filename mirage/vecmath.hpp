@@ -24,7 +24,7 @@ struct Vector2
 
     Vector2& operator=(Vector2<T>&& v)
     {
-        x = v.y;
+        x = v.x;
         y = v.y;
         return *this;
     }
@@ -112,29 +112,29 @@ Vector2<T>& operator*=(Vector2<T>& s, const S scalar)
 }
 
 template<typename T>
-T length(const Vector2<T> s)
+T Length(const Vector2<T> s)
 {
     return std::sqrt(s.x * s.x + s.y * s.y);
 }
 
 template<typename T>
-Vector2<T> normalize(const Vector2<T> s)
+Vector2<T> Normalize(const Vector2<T> s)
 {
-    return s * (1.f / length(s));
+    return s * (1.f / Length(s));
 }
 
 template<typename T>
-T dot(const Vector2<T> s, const Vector2<T> t)
+T Dot(const Vector2<T> s, const Vector2<T> t)
 {
     return s.x * t.x + s.y * t.y;
 }
 
 template<typename T>
-Vector2<T> reflect(const Vector2<T> d, const Vector2<T> n)
+Vector2<T> Reflect(const Vector2<T> D, const Vector2<T> N)
 {
     // Reflects incident vector v around normal vecotr n.
     // n is expected to be normalized
-    return d - (2 * (dot(d, n) * n));
+    return (2 * (Dot(D, N) * N)) - D;
 }
 
 template<typename T>
@@ -588,13 +588,13 @@ Matrix33<T> Transpose(const Matrix33<T>& A)
     R.d[0] = A.d[0]; R.d[1] = A.d[3]; R.d[2] = A.d[6];
     R.d[3] = A.d[1]; R.d[4] = A.d[4]; R.d[5] = A.d[7];
     R.d[6] = A.d[2]; R.d[7] = A.d[5]; R.d[8] = A.d[8];
-    return r;
+    return R;
 }
 
 template<typename T>
 Matrix33<T> Inverse(const Matrix33<T>& S)
 {
-    T d = Det(v);
+    T d = Det(S);
     if (IsZero(d))
         assert(false, "Determinant is zero. Matrix Inverse does not exist.");
 
@@ -799,12 +799,143 @@ T Det(const Matrix44<T>& A)
 template<typename T>
 Matrix44<T> Transpose(const Matrix44<T>& A)
 {
-    Matrix33<T> R;
+    Matrix44<T> R;
     R.d[0] = A.d[0];  R.d[1] = A.d[4];  R.d[2] = A.d[8];   R.d[3] = A.d[12];
     R.d[4] = A.d[1];  R.d[5] = A.d[5];  R.d[6] = A.d[9];   R.d[7] = A.d[13];
     R.d[8] = A.d[2];  R.d[9] = A.d[6];  R.d[10] = A.d[10]; R.d[11] = A.d[14];
     R.d[12] = A.d[3]; R.d[13] = A.d[7]; R.d[14] = A.d[11]; R.d[15] = A.d[15];
-    return r;
+    return R;
+}
+
+template<typename T>
+Matrix44<T> gluInvertMatrix(const Matrix44<T>& A)
+{
+    T inv[16],
+
+    inv[0] = A.d[5] * A.d[10] * A.d[15] -
+        A.d[5] * A.d[11] * A.d[14] -
+        A.d[9] * A.d[6] * A.d[15] +
+        A.d[9] * A.d[7] * A.d[14] +
+        A.d[13] * A.d[6] * A.d[11] -
+        A.d[13] * A.d[7] * A.d[10];
+
+    inv[4] = -A.d[4] * A.d[10] * A.d[15] +
+        A.d[4] * A.d[11] * A.d[14] +
+        A.d[8] * A.d[6] * A.d[15] -
+        A.d[8] * A.d[7] * A.d[14] -
+        A.d[12] * A.d[6] * A.d[11] +
+        A.d[12] * A.d[7] * A.d[10];
+
+    inv[8] = A.d[4] * A.d[9] * A.d[15] -
+        A.d[4] * A.d[11] * A.d[13] -
+        A.d[8] * A.d[5] * A.d[15] +
+        A.d[8] * A.d[7] * A.d[13] +
+        A.d[12] * A.d[5] * A.d[11] -
+        A.d[12] * A.d[7] * A.d[9];
+
+    inv[12] = -A.d[4] * A.d[9] * A.d[14] +
+        A.d[4] * A.d[10] * A.d[13] +
+        A.d[8] * A.d[5] * A.d[14] -
+        A.d[8] * A.d[6] * A.d[13] -
+        A.d[12] * A.d[5] * A.d[10] +
+        A.d[12] * A.d[6] * A.d[9];
+
+    inv[1] = -A.d[1] * A.d[10] * A.d[15] +
+        A.d[1] * A.d[11] * A.d[14] +
+        A.d[9] * A.d[2] * A.d[15] -
+        A.d[9] * A.d[3] * A.d[14] -
+        A.d[13] * A.d[2] * A.d[11] +
+        A.d[13] * A.d[3] * A.d[10];
+
+    inv[5] = A.d[0] * A.d[10] * A.d[15] -
+        A.d[0] * A.d[11] * A.d[14] -
+        A.d[8] * A.d[2] * A.d[15] +
+        A.d[8] * A.d[3] * A.d[14] +
+        A.d[12] * A.d[2] * A.d[11] -
+        A.d[12] * A.d[3] * A.d[10];
+
+    inv[9] = -A.d[0] * A.d[9] * A.d[15] +
+        A.d[0] * A.d[11] * A.d[13] +
+        A.d[8] * A.d[1] * A.d[15] -
+        A.d[8] * A.d[3] * A.d[13] -
+        A.d[12] * A.d[1] * A.d[11] +
+        A.d[12] * A.d[3] * A.d[9];
+
+    inv[13] = A.d[0] * A.d[9] * A.d[14] -
+        A.d[0] * A.d[10] * A.d[13] -
+        A.d[8] * A.d[1] * A.d[14] +
+        A.d[8] * A.d[2] * A.d[13] +
+        A.d[12] * A.d[1] * A.d[10] -
+        A.d[12] * A.d[2] * A.d[9];
+
+    inv[2] = A.d[1] * A.d[6] * A.d[15] -
+        A.d[1] * A.d[7] * A.d[14] -
+        A.d[5] * A.d[2] * A.d[15] +
+        A.d[5] * A.d[3] * A.d[14] +
+        A.d[13] * A.d[2] * A.d[7] -
+        A.d[13] * A.d[3] * A.d[6];
+
+    inv[6] = -A.d[0] * A.d[6] * A.d[15] +
+        A.d[0] * A.d[7] * A.d[14] +
+        A.d[4] * A.d[2] * A.d[15] -
+        A.d[4] * A.d[3] * A.d[14] -
+        A.d[12] * A.d[2] * A.d[7] +
+        A.d[12] * A.d[3] * A.d[6];
+
+    inv[10] = A.d[0] * A.d[5] * A.d[15] -
+        A.d[0] * A.d[7] * A.d[13] -
+        A.d[4] * A.d[1] * A.d[15] +
+        A.d[4] * A.d[3] * A.d[13] +
+        A.d[12] * A.d[1] * A.d[7] -
+        A.d[12] * A.d[3] * A.d[5];
+
+    inv[14] = -A.d[0] * A.d[5] * A.d[14] +
+        A.d[0] * A.d[6] * A.d[13] +
+        A.d[4] * A.d[1] * A.d[14] -
+        A.d[4] * A.d[2] * A.d[13] -
+        A.d[12] * A.d[1] * A.d[6] +
+        A.d[12] * A.d[2] * A.d[5];
+
+    inv[3] = -A.d[1] * A.d[6] * A.d[11] +
+        A.d[1] * A.d[7] * A.d[10] +
+        A.d[5] * A.d[2] * A.d[11] -
+        A.d[5] * A.d[3] * A.d[10] -
+        A.d[9] * A.d[2] * A.d[7] +
+        A.d[9] * A.d[3] * A.d[6];
+
+    inv[7] = A.d[0] * A.d[6] * A.d[11] -
+        A.d[0] * A.d[7] * A.d[10] -
+        A.d[4] * A.d[2] * A.d[11] +
+        A.d[4] * A.d[3] * A.d[10] +
+        A.d[8] * A.d[2] * A.d[7] -
+        A.d[8] * A.d[3] * A.d[6];
+
+    inv[11] = -A.d[0] * A.d[5] * A.d[11] +
+        A.d[0] * A.d[7] * A.d[9] +
+        A.d[4] * A.d[1] * A.d[11] -
+        A.d[4] * A.d[3] * A.d[9] -
+        A.d[8] * A.d[1] * A.d[7] +
+        A.d[8] * A.d[3] * A.d[5];
+
+    inv[15] = A.d[0] * A.d[5] * A.d[10] -
+        A.d[0] * A.d[6] * A.d[9] -
+        A.d[4] * A.d[1] * A.d[10] +
+        A.d[4] * A.d[2] * A.d[9] +
+        A.d[8] * A.d[1] * A.d[6] -
+        A.d[8] * A.d[2] * A.d[5];
+
+    T det = A.d[0] * inv[0] + A.d[1] * inv[4] + A.d[2] * inv[8] + A.d[3] * inv[12];
+
+    if (det == 0)
+        assert(false, "Determinant is zero!");
+
+    det = 1.0 / det;
+
+    Matrix44<T> R;
+    for (int i = 0; i < 16; i++)
+        R[i] = inv[i] * det;
+
+    return R;
 }
 
 } // namespace mirage

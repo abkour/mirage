@@ -16,14 +16,14 @@ template<typename T>
 inline bool IsZero(T v);
 
 template<typename T>
-inline typename std::enable_if<std::is_integral_v<T>, bool>
+inline typename std::enable_if_t<std::is_integral_v<T>, bool>
 IsZero(T v)
 {
     return v == 0;
 }
 
 template<typename T>
-inline typename std::enable_if<std::is_floating_point_v<T>, bool>
+inline typename std::enable_if_t<std::is_floating_point_v<T>, bool>
 IsZero(T v)
 {
     constexpr float e = 1e-4;
@@ -31,17 +31,14 @@ IsZero(T v)
 }
 
 template<typename T>
-bool IsEqual(T x, T c);
-
-template<typename T>
-inline typename std::enable_if<std::is_integral_v<T>, bool>
+inline typename std::enable_if_t<!std::is_floating_point_v<T>, bool>
 IsEqual(T x, T c)
 {
     return x == c;
 }
 
 template<typename T>
-inline typename std::enable_if<std::is_floating_point_v<T>, bool>
+inline typename std::enable_if_t<std::is_floating_point_v<T>, bool>
 IsEqual(T x, T c)
 {
     constexpr float e = 1e-4;

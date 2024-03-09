@@ -1,0 +1,40 @@
+﻿  main.cpp
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(84,22): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(98,21): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(127,21): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(76,17): warning C4984: 'if constexpr' is a C++17 language extension
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(90,17): warning C4984: 'if constexpr' is a C++17 language extension
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(102,17): warning C4984: 'if constexpr' is a C++17 language extension
+C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(114,22): warning C4984: 'if constexpr' is a C++17 language extension
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(507,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(515,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(599,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(703,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(711,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(930,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  main_test.cpp
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(507,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(515,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(599,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(703,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(711,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(930,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\main_test.cpp(58,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(117,21): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\main_test.cpp(54,5): message : see reference to function template instantiation 'T mirage::Length<int>(const mirage::Vector2<T>)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\util.hpp(44,23): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\flora\dev\mirage\mirage\main_test.cpp(59,29): message : see reference to function template instantiation 'bool mirage::IsEqual<T>(T,T)' being compiled
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  mirage.vcxproj -> C:\Users\flora\dev\mirage\x64\Debug\mirage.exe

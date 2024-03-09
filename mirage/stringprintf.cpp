@@ -91,14 +91,14 @@ FmtStruct GetFmtSpecifier(const char* f)
     if (*f == 'l')
     {
         fmt.specifier += 'l';
-        f++;
         fmt.specifier_length++;
+        f++;
     }
     if (*f == 'l')
     {
         fmt.specifier += 'l';
-        f++;
         fmt.specifier_length++;
+        f++;
     }
 
     if (*f == '.')
