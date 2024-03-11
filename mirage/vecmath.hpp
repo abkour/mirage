@@ -2,6 +2,7 @@
 #define MIRAGE_VECMATH_HPP
 #include <cassert>
 #include <memory>
+#include "check.hpp"
 #include "util.hpp"
 
 namespace mirage
@@ -42,8 +43,8 @@ struct Vector2
 
     T operator[](int i) const
     {
-        if (i < 0 || i > 1)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 1);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         if (i == 1) return y;
@@ -51,8 +52,8 @@ struct Vector2
 
     T& operator[](int i)
     {
-        if (i < 0 || i > 1)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 1);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         if (i == 1) return y;
@@ -192,8 +193,8 @@ struct Vector3
 
     T operator[](int i) const
     {
-        if (i < 0 || i > 2)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 2);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         else if (i == 1) return y;
@@ -202,8 +203,8 @@ struct Vector3
 
     T& operator[](int i)
     {
-        if (i < 0 || i > 2)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 2);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         else if (i == 1) return y;
@@ -360,8 +361,8 @@ struct Vector4
 
     T operator[](int i) const
     {
-        if (i < 0 || i > 3)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 3);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         else if (i == 1) return y;
@@ -371,8 +372,8 @@ struct Vector4
 
     T& operator[](int i)
     {
-        if (i < 0 || i > 3)
-            assert(false, "Index out of bounds.");
+        DCHECK_LE(i, 3);
+        DCHECK_GE(i, 0);
 
         if (i == 0) return x;
         else if (i == 1) return y;
@@ -543,16 +544,16 @@ struct Matrix33
 
     Vector3<T> Col(int i) const
     {
-        if (i > 2 || i < 0)
-            assert(false, "Bad index!");
+        DCHECK_LE(i, 2);
+        DCHECK_GE(i, 0);
 
         return Vector3<T>(d[i], d[i + 3], d[i + 6]);
     }
 
     Vector3<T> Row(int i) const
     {
-        if (i > 2 || i < 0)
-            assert(false, "Bad index!");
+        DCHECK_LE(i, 2);
+        DCHECK_GE(i, 0);
         
         return Vector3<T>(d[i * 3], d[i * 3 + 1], d[i * 3 + 2]);
     }
@@ -763,16 +764,16 @@ struct Matrix44
 
     Vector4<T> Col(int i) const
     {
-        if (i > 3 || i < 0)
-            assert(false, "Bad index!");
+        DCHECK_LE(i, 3);
+        DCHECK_GE(i, 0);
 
         return Vector4<T>(d[i], d[i + 4], d[i + 8], d[i + 12]);
     }
 
     Vector4<T> Row(int i) const
     {
-        if (i > 3 || i < 0)
-            assert(false, "Bad index!");
+        DCHECK_LE(i, 3);
+        DCHECK_GE(i, 0);
 
         return Vector4<T>(d[i * 4], d[i * 4 + 1], d[i * 4 + 2], d[i * 4 + 3]);
     }
@@ -893,10 +894,10 @@ T Det(const Matrix44<T>& A)
 template<typename T>
 T DetExcludeRowCol(const Matrix44<T>& A, const int row, const int col)
 {
-    if (row < 0 || row > 3)
-        assert(false, "Row index out of bounds!");
-    if (col < 0 || col > 3)
-        assert(false, "Column index out of bounds.");
+    DCHECK_LE(row, 3);
+    DCHECK_GE(row, 0);
+    DCHECK_LE(col, 3);
+    DCHECK_GE(col, 0);
 
     int c0 = (col == 0) ? 1 : 0;
     int c1 = (col == 1) ? 1 : c0;

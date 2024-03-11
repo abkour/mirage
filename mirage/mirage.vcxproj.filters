@@ -41,5 +41,8 @@
     <ClInclude Include="tmp_runtests_macro.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="check.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

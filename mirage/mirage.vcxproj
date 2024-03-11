@@ -145,6 +145,7 @@
     <ClCompile Include="vecmath_test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="check.hpp" />
     <ClInclude Include="stringprintf.hpp" />
     <ClInclude Include="tmp_runtests_macro.hpp" />
     <ClInclude Include="util.hpp" />
