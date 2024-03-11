@@ -42,12 +42,18 @@ struct Vector2
 
     T operator[](int i) const
     {
+        if (i < 0 || i > 1)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         if (i == 1) return y;
     }
 
     T& operator[](int i)
     {
+        if (i < 0 || i > 1)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         if (i == 1) return y;
     }
@@ -186,6 +192,9 @@ struct Vector3
 
     T operator[](int i) const
     {
+        if (i < 0 || i > 2)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         else if (i == 1) return y;
         else if (i == 2) return z;
@@ -193,6 +202,9 @@ struct Vector3
 
     T& operator[](int i)
     {
+        if (i < 0 || i > 2)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         else if (i == 1) return y;
         else if (i == 2) return z;
@@ -348,6 +360,9 @@ struct Vector4
 
     T operator[](int i) const
     {
+        if (i < 0 || i > 3)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         else if (i == 1) return y;
         else if (i == 2) return z;
@@ -356,6 +371,9 @@ struct Vector4
 
     T& operator[](int i)
     {
+        if (i < 0 || i > 3)
+            assert(false, "Index out of bounds.");
+
         if (i == 0) return x;
         else if (i == 1) return y;
         else if (i == 2) return z;
