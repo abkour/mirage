@@ -13,9 +13,6 @@ std::size_t ARRAYSIZE(T(&t)[N])
 }
 
 template<typename T>
-inline bool IsZero(T v);
-
-template<typename T>
 inline typename std::enable_if_t<std::is_integral_v<T>, bool>
 IsZero(T v)
 {

@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_test.cpp" />
     <ClCompile Include="stringprintf.cpp" />
+    <ClCompile Include="vecmath_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stringprintf.hpp" />

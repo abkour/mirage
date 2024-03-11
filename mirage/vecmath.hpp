@@ -11,6 +11,7 @@ template<typename T>
 struct Vector2
 {
     Vector2() {}
+    Vector2(T v) : x(v), y(v) {}
     Vector2(T x, T y) : x(x), y(y) {}
     Vector2(const Vector2<T>& v) : x(v.x), y(v.y) {}
     Vector2(Vector2<T>&& v) : x(v.x), y(v.y) {}
@@ -27,6 +28,16 @@ struct Vector2
         x = v.x;
         y = v.y;
         return *this;
+    }
+
+    bool operator==(const Vector2<T> V) const
+    {
+        return  IsEqual(x, V.x) && IsEqual(y, V.y);
+    }
+
+    bool operator!=(const Vector2<T>& V) const
+    {
+        return !this->operator==(V);
     }
 
     T operator[](int i) const
@@ -142,6 +153,7 @@ template<typename T>
 struct Vector3
 {
     Vector3() {}
+    Vector3(T v) : x(v), y(v), z(v) {}
     Vector3(T x, T y, T z) : x(x), y(y), z(z) {}
     Vector3(const Vector3<T>& v) : x(v.x), y(v.y), z(v.z) {}
     Vector3(Vector3<T>&& v) : x(v.x), y(v.y), z(v.z) {}
@@ -160,6 +172,16 @@ struct Vector3
         y = v.y;
         z = v.z;
         return *this;
+    }
+
+    bool operator==(const Vector3<T> V) const
+    {
+        return  IsEqual(x, x) && IsEqual(y, V.y) && IsEqual(z, V.z);
+    }
+
+    bool operator!=(const Vector3<T>& V) const
+    {
+        return !this->operator==(V);
     }
 
     T operator[](int i) const
@@ -273,7 +295,7 @@ template<typename T>
 Vector3<T> Cross(const Vector3<T> s, const Vector3<T> t)
 {
     return Vector3<T>(
-        s.y * t.z - s.z * t.x, 
+        s.y * t.z - s.z * t.y, 
         s.z * t.x - s.x * t.z,
         s.x * t.y - s.y * t.x
     );
@@ -284,13 +306,14 @@ Vector3<T> Reflect(const Vector3<T> D, const Vector3<T> N)
 {
     // Reflects incident vector v around normal vecotr n.
     // n is expected to be normalized
-    return (2 * (dot(D, N) * N)) - D;
+    return (2 * (Dot(D, N) * N)) - D;
 }
 
 template<typename T>
 struct Vector4
 {
     Vector4() {}
+    Vector4(T v) : x(v), y(v), z(v), w(v) {}
     Vector4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
     Vector4(const Vector4<T>& v) : x(v.x), y(v.y), z(v.z), w(v.w) {}
     Vector4(Vector4<T>&& v) : x(v.x), y(v.y), z(v.z), w(v.w) {}
@@ -306,11 +329,21 @@ struct Vector4
 
     Vector4& operator=(Vector4<T>&& v)
     {
-        x = v.y;
+        x = v.x;
         y = v.y;
         z = v.z;
         w = v.w;
         return *this;
+    }
+
+    bool operator==(const Vector4<T> V) const
+    {
+        return  IsEqual(x, x) && IsEqual(y, V.y) && IsEqual(z, V.z) && IsEqual(w, V.w);
+    }
+
+    bool operator!=(const Vector4<T>& V) const
+    {
+        return !this->operator==(V);
     }
 
     T operator[](int i) const
@@ -327,11 +360,6 @@ struct Vector4
         else if (i == 1) return y;
         else if (i == 2) return z;
         else if (i == 3) return w;
-    }
-
-    bool IsZero() const
-    {
-        return IsZero(x) && IsZero(y) && IsZero(z) && IsZero(w);
     }
 
     T x, y, z, w;
@@ -352,7 +380,7 @@ Vector4<T> operator-(const Vector4<T> s, const Vector4<T> t)
 template<typename T>
 Vector4<T> operator*(const Vector4<T> s, const Vector4<T> t)
 {
-    return Vector4<T>(s.x * t.x, s.y * t.y, s.z * t.z, s.w + t.w);
+    return Vector4<T>(s.x * t.x, s.y * t.y, s.z * t.z, s.w * t.w);
 }
 
 template<typename T>
@@ -408,21 +436,27 @@ Vector4<T>& operator*=(Vector4<T>& s, const S scalar)
 }
 
 template<typename T>
-T length(const Vector4<T> s)
+bool IsZero(const Vector4<T> S)
 {
-    return std::sqrt(s.x * s.x + s.y * s.y + s.z * s.z + s.w * s.w);
+    return IsZero(S.x) && IsZero(S.y) && IsZero(S.z) && IsZero(S.w);
 }
 
 template<typename T>
-Vector3<T> normalize(const Vector4<T> s)
+T Length(const Vector4<T> S)
 {
-    return s * (1.f / length(s));
+    return std::sqrt(S.x * S.x + S.y * S.y + S.z * S.z + S.w * S.w);
 }
 
 template<typename T>
-T dot(const Vector4<T> s, const Vector4<T> t)
+Vector4<T> Normalize(const Vector4<T> S)
 {
-    return s.x * t.x + s.y * t.y + s.z * t.z + s.w * t.w;
+    return S * (1.f / Length(S));
+}
+
+template<typename T>
+T Dot(const Vector4<T> S, const Vector4<T> U)
+{
+    return S.x * U.x + S.y * U.y + S.z * U.z + S.w * U.w;
 }
 
 template<typename T>
@@ -445,23 +479,23 @@ struct Matrix33
         d[6] = gg; d[7] = hh; d[8] = ii;
     }
 
-    Matrix33(const Matrix33& v)
+    Matrix33(const Matrix33<T>& v)
     {
         std::memcpy(d, v.d, sizeof(T) * 9);
     }
 
-    Matrix33(Matrix33&& v)
+    Matrix33(Matrix33<T>&& v)
     {
         std::memcpy(d, v.d, sizeof(T) * 9);
     }
 
-    Matrix33& operator=(const Matrix33& v)
+    Matrix33<T>& operator=(const Matrix33<T>& v)
     {
         std::memcpy(d, v.d, sizeof(T) * 9);
         return *this;
     }
 
-    Matrix33& operator=(Matrix33&& v)
+    Matrix33<T>& operator=(Matrix33<T>&& v)
     {
         std::memcpy(d, v.d, sizeof(T) * 9);
         return *this;
@@ -478,20 +512,6 @@ struct Matrix33
         tmp = d[1]; d[1] = d[3]; d[3] = tmp;
         tmp = d[2]; d[2] = d[6]; d[6] = tmp;
         tmp = d[5]; d[5] = d[7]; d[7] = tmp;
-    }
-
-    bool IsDiagonal() const
-    {
-        return 
-            IsZero(d[1]) && IsZero(d[2]) && IsZero(d[3]) && 
-            IsZero(d[5]) && IsZero(d[6]) && IsZero(d[7]);
-    }
-
-    bool IsIdentity() const
-    {
-        bool DiagonalIsOne = IsEqual(d[0], 1) && IsEqual(d[4], 1) && IsEqual(d[8], 1);
-        bool LowerAndUpperIsZero = IsDiagonal();
-        return DiagonalIsOne && LowerAndUpperIsZero;
     }
 
     bool IsZero() const
@@ -572,6 +592,30 @@ Matrix33<T> operator*(const Matrix33<T>& A, const T s)
 }
 
 template<typename T>
+Matrix33<T>& operator*=(Matrix33<T>& A, const T s)
+{
+    for (int i = 0; i < 9; ++i)
+        A.d[i] = A.d[i] * s;
+    return A;
+}
+
+template<typename T>
+bool IsDiagonalMatrix(const Matrix33<T>& A)
+{
+    return IsZero(A.d[1]) && IsZero(A.d[2]) && IsZero(A.d[3]) &&
+           IsZero(A.d[5]) && IsZero(A.d[6]) && IsZero(A.d[7]);
+}
+
+template<typename T>
+bool IsIdentityMatrix(const Matrix33<T>& A)
+{
+    constexpr T One = 1;
+    bool DiagonalIsOne = IsEqual(A.d[0], One) && IsEqual(A.d[4], One) && IsEqual(A.d[8], One);
+    bool LowerAndUpperIsZero = IsDiagonalMatrix(A);
+    return DiagonalIsOne && LowerAndUpperIsZero;
+}
+
+template<typename T>
 T Det(const Matrix33<T>& A)
 {
     return
@@ -581,6 +625,27 @@ T Det(const Matrix33<T>& A)
         (A.d[2] * A.d[4] * A.d[6]) -
         (A.d[1] * A.d[3] * A.d[8]) -
         (A.d[0] * A.d[5] * A.d[7]);
+}
+
+template<typename T>
+T DetExcludeRowCol(const Matrix33<T>& A, const int row, const int col)
+{
+    if (row < 0 || row > 2)
+        assert(false, "Row index out of bounds!");
+    if (col < 0 || col > 2)
+        assert(false, "Column index out of bounds!");
+    
+    int c0 = (col == 0) ? 1 : 0;
+    int c1 = (col == 1) ? 1 : c0;
+    int r0 = (row == 0) ? 3 : 0;
+    int r1 = (row == 1) ? 3 : r0;
+
+    T a = A.d[c0 + r0];
+    T b = A.d[c1 + r0 + 1];
+    T c = A.d[c0 + r1 + 3];
+    T d = A.d[c1 + r1 + 4];
+
+    return a * d - c * b;
 }
 
 template<typename T>
@@ -626,7 +691,11 @@ struct Matrix44
     // Make diagonal matrix.
     Matrix44(T v)
     {
-        d[0] = d[5] = d[10] = d[15] = v;
+        constexpr T Null = T();
+        d[0] = v;       d[1] = Null;    d[2] = Null;    d[3] = Null;
+        d[4] = Null;    d[5] = v;       d[6] = Null;    d[7] = Null;
+        d[8] = Null;    d[9] = Null;    d[10] = v;      d[11] = Null;
+        d[12] = Null;   d[13] = Null;   d[14] = Null;   d[15] = v;
     }
     Matrix44(T v0, T v1, T v2, T v3, T v4, T v5, T v6, T v7, T v8,
         T v9, T v10, T v11, T v12, T v13, T v14, T v15)
@@ -672,31 +741,6 @@ struct Matrix44
         tmp = d[6];  d[6]  = d[9];  d[9]  = tmp;
         tmp = d[7];  d[7]  = d[13]; d[13] = tmp;
         tmp = d[11]; d[11] = d[14]; d[14] = tmp;
-    }
-
-    bool IsDiagonal() const
-    {
-        return
-            IsZero(d[1]) && IsZero(d[2]) && IsZero(d[3]) &&
-            IsZero(d[4]) && IsZero(d[6]) && IsZero(d[7]) &&
-            IsZero(d[8]) && IsZero(d[9]) && IsZero(d[11]) &&
-            IsZero(d[12]) && IsZero(d[13]) && IsZero(d[14]);
-    }
-
-    bool IsIdentity() const
-    {
-        bool DiagonalIsOne = IsEqual(d[0], 1) && IsEqual(d[5], 1) && IsEqual(d[10], 1) && IsEqual(d[15]);
-        bool LowerAndUpperIsZero = IsDiagonal();
-        return DiagonalIsOne && LowerAndUpperIsZero;
-    }
-
-    bool IsZero() const
-    {
-        for (int i = 0; i < 16; ++i)
-        {
-            if (!IsZero(d[i])) return false;
-        }
-        return true;
     }
 
     Vector4<T> Col(int i) const
@@ -765,6 +809,36 @@ Matrix44<T> operator*(const Matrix44<T>& A, const Matrix44<T>& B)
 }
 
 template<typename T>
+bool IsZero(const Matrix44<T>& A)
+{
+    for (int i = 0; i < 16; ++i)
+    {
+        if (!IsZero(A.d[i])) return false;
+    }
+    return true;
+}
+
+template<typename T>
+bool IsDiagonalMatrix(const Matrix44<T>& A)
+{
+    return
+        IsZero(A.d[1]) && IsZero(A.d[2]) && IsZero(A.d[3]) &&
+        IsZero(A.d[4]) && IsZero(A.d[6]) && IsZero(A.d[7]) &&
+        IsZero(A.d[8]) && IsZero(A.d[9]) && IsZero(A.d[11]) &&
+        IsZero(A.d[12]) && IsZero(A.d[13]) && IsZero(A.d[14]);
+}
+
+template<typename T>
+bool IsIdentityMatrix(const Matrix44<T>& A)
+{
+    constexpr T One = 1;
+    bool DiagonalIsOne = IsEqual(A.d[0], One) && IsEqual(A.d[5], One) 
+                      && IsEqual(A.d[10], One) && IsEqual(A.d[15], One);
+    bool LowerAndUpperIsZero = IsDiagonalMatrix(A);
+    return DiagonalIsOne && LowerAndUpperIsZero;
+}
+
+template<typename T>
 T Det(const Matrix44<T>& A)
 {
     T D0 = (A.d[5] * A.d[10] * A.d[15]) +
@@ -799,6 +873,30 @@ T Det(const Matrix44<T>& A)
 }
 
 template<typename T>
+T DetExcludeRowCol(const Matrix44<T>& A, const int row, const int col)
+{
+    if (row < 0 || row > 3)
+        assert(false, "Row index out of bounds!");
+    if (col < 0 || col > 3)
+        assert(false, "Column index out of bounds.");
+
+    int c0 = (col == 0) ? 1 : 0;
+    int c1 = (col == 1) ? 1 : c0;
+    int c2 = (col == 2) ? 1 : c1;
+    int r0 = (row == 0) ? 4 : 0;
+    int r1 = (row == 1) ? 4 : r0;
+    int r2 = (row == 2) ? 4 : r1;
+
+    return
+        (A.d[c0 + r0] * A.d[5 + c1 + r1] * A.d[10 + c2 + r2]) +
+        (A.d[1 + c1 + r0] * A.d[6 + c2 + r1] * A.d[8 + c0 + r2]) +
+        (A.d[2 + c2 + r0] * A.d[4 + c0 + r1] * A.d[9 + c1 + r2]) -
+        (A.d[2 + c2 + r0] * A.d[5 + c1 + r1] * A.d[8 + c0 + r2]) -
+        (A.d[1 + c1 + r0] * A.d[4 + c0 + r1] * A.d[10 + c2 + r2]) -
+        (A.d[c0 + r0] * A.d[6 + c2 + r1] * A.d[9 + c1 + r2]);
+}
+
+template<typename T>
 Matrix44<T> Transpose(const Matrix44<T>& A)
 {
     Matrix44<T> R;
@@ -810,9 +908,9 @@ Matrix44<T> Transpose(const Matrix44<T>& A)
 }
 
 template<typename T>
-Matrix44<T> gluInvertMatrix(const Matrix44<T>& A)
+Matrix44<T> InverseMatrix(const Matrix44<T>& A)
 {
-    T inv[16],
+    T inv[16];
 
     inv[0] = A.d[5] * A.d[10] * A.d[15] -
         A.d[5] * A.d[11] * A.d[14] -
@@ -935,7 +1033,7 @@ Matrix44<T> gluInvertMatrix(const Matrix44<T>& A)
 
     Matrix44<T> R;
     for (int i = 0; i < 16; i++)
-        R[i] = inv[i] * det;
+        R.d[i] = inv[i] * det;
 
     return R;
 }

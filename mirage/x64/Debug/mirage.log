@@ -6,35 +6,166 @@ C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(76,17): warning C4984: 'if con
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(90,17): warning C4984: 'if constexpr' is a C++17 language extension
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(102,17): warning C4984: 'if constexpr' is a C++17 language extension
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(114,22): warning C4984: 'if constexpr' is a C++17 language extension
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(507,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(515,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(599,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(703,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(711,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(930,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-  main_test.cpp
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(507,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(515,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(599,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(703,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(711,13): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(930,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\main_test.cpp(58,22): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(117,21): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\flora\dev\mirage\mirage\main_test.cpp(54,5): message : see reference to function template instantiation 'T mirage::Length<int>(const mirage::Vector2<T>)' being compiled
-          with
-          [
-              T=int
-          ]
-C:\Users\flora\dev\mirage\mirage\util.hpp(44,23): warning C4305: 'initializing': truncation from 'double' to 'const float'
-C:\Users\flora\dev\mirage\mirage\main_test.cpp(59,29): message : see reference to function template instantiation 'bool mirage::IsEqual<T>(T,T)' being compiled
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(529,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(537,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(634,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(636,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(666,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(749,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(757,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(879,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(881,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(1030,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  vecmath_test.cpp
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(529,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(537,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(634,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(636,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(666,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(749,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(757,13): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(879,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(881,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(1030,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(57,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(94,29): warning C4305: 'argument': truncation from 'double' to 'T'
           with
           [
               T=float
           ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(94,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(95,29): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(95,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(173,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(225,35): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(225,29): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(225,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(226,35): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(226,29): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(226,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(359,41): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(359,35): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(359,29): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(359,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(360,41): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(360,35): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(360,29): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(360,23): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(129,21): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(53,5): message : see reference to function template instantiation 'T mirage::Length<int>(const mirage::Vector2<T>)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\util.hpp(41,23): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(58,5): message : see reference to function template instantiation 'bool mirage::IsEqual<T>(T,T)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(279,21): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(169,5): message : see reference to function template instantiation 'T mirage::Length<int>(const mirage::Vector3<T>)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(447,21): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(309,5): message : see reference to function template instantiation 'T mirage::Length<int>(const mirage::Vector4<T>)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(1032,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(828,38): message : see reference to function template instantiation 'mirage::Matrix44<float> mirage::InverseMatrix<float>(const mirage::Matrix44<float> &)' being compiled
+C:\Users\flora\dev\mirage\mirage\util.hpp(26,23): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(123,12): message : see reference to function template instantiation 'bool mirage::IsZero<T>(T)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp(96,5): message : see reference to function template instantiation 'bool mirage::IsZero<float>(const mirage::Vector2<float> &)' being compiled
   Generating Code...
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(53): warning C4715: 'mirage::Vector2<int>::operator[]': not all control paths return a value
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(199): warning C4715: 'mirage::Vector3<int>::operator[]': not all control paths return a value
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(363): warning C4715: 'mirage::Vector4<int>::operator[]': not all control paths return a value
   mirage.vcxproj -> C:\Users\flora\dev\mirage\x64\Debug\mirage.exe
