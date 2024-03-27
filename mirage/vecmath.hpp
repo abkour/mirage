@@ -1,6 +1,7 @@
 #ifndef MIRAGE_VECMATH_HPP
 #define MIRAGE_VECMATH_HPP
 #include <cassert>
+#include <cmath>
 #include <memory>
 #include "check.hpp"
 #include "util.hpp"

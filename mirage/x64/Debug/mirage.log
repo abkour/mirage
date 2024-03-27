@@ -1,37 +1,126 @@
 ﻿  main.cpp
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(84,22): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(98,21): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(127,21): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(76,17): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(90,17): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(102,17): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\stringprintf.hpp(114,22): warning C4984: 'if constexpr' is a C++17 language extension
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(46,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(47,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(55,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(48,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(56,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(196,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(57,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(197,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(206,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(198,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(207,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(364,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(208,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(365,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(375,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(366,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(376,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(547,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(377,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(548,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(555,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(549,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(556,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(653,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(655,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(685,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(767,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(557,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(654,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(656,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(686,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(768,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(775,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(769,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(776,9): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(897,5): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(777,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(898,5): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(899,5): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
 C:\Users\flora\dev\mirage\mirage\vecmath.hpp(900,5): warning C4002: too many arguments for function-like macro invocation 'assert'
-C:\Users\flora\dev\mirage\mirage\vecmath.hpp(1049,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(901,5): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\vecmath.hpp(1050,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\glShader\shaderdirect.hpp(235,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\glShader\shaderdirect.hpp(268,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\point.hpp(39,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\point.hpp(40,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\point.hpp(46,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\mirage\mirage\point.hpp(47,9): warning C4002: too many arguments for function-like macro invocation 'assert'
+  (compiling source file 'main.cpp')
+  
+C:\Users\flora\dev\glShader\shaderdirect.hpp(210,1): warning C4715: 'ShaderWrapper::isShaderCompilationValid': not all control paths return a value
   mirage.vcxproj -> C:\Users\flora\dev\mirage\x64\Debug\mirage.exe

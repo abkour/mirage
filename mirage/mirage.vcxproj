@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;C:\Users\flora\ext\glfw-3.3.8\include\GLFW;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;C:\Users\flora\ext\googletest\googletest\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Debug\x64;C:\Users\flora\ext\googletest\build\lib\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\flora\ext\double-conversion\double-conversion;C:\Users\flora\ext\googletest\googletest\include;C:\Users\flora\ext\glfw-3.3.8\include;C:\Users\flora\ext\glad\include;C:\Users\flora\dev\glShader;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\flora\ext\double-conversion\msvc\Debug\x64;C:\Users\flora\ext\googletest\build\lib\Debug;C:\Users\flora\ext\glfw-3.3.8\build\src\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,7 +117,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>double-conversion.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>double-conversion.lib;gtest.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,17 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\ext\glad\src\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_test.cpp" />
     <ClCompile Include="stringprintf.cpp" />
+    <ClCompile Include="texture_renderer.cpp" />
+    <ClCompile Include="triangle_p0.cpp" />
     <ClCompile Include="vecmath_test.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="check.hpp" />
+    <ClInclude Include="point.hpp" />
+    <ClInclude Include="texture_renderer.hpp" />
     <ClInclude Include="stringprintf.hpp" />
     <ClInclude Include="tmp_runtests_macro.hpp" />
+    <ClInclude Include="triangle_p0.hpp" />
     <ClInclude Include="util.hpp" />
     <ClInclude Include="vecmath.hpp" />
+    <ClInclude Include="window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

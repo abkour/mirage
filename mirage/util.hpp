@@ -42,6 +42,17 @@ IsEqual(T x, T c)
     return x >= c - e && x <= c + e;
 }
 
+template<typename T>
+T Abs(T&& v)
+{
+    return v < 0.0 ? -v : v;
+}
+
+inline float Lerp(float low, float high, float val)
+{
+    return low * (1.f - val) + high * val;
+}
+
 #pragma warning ( push )
 #pragma warning ( disable : 4996 )
 

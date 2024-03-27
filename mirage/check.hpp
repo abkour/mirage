@@ -17,7 +17,7 @@ namespace mirage
             printf("Check failed: %s %s %s\n", #a, #op, #b); \
             assert(false, "Error.");\
         } \
-    } while(false) /*  */
+    } while(false)
 
 #define DCHECK_EQ(x, y)  DCHECK_IMPL(x, y, ==)
 #define DCHECK_NE(x, y)  DCHECK_IMPL(x, y, !=)

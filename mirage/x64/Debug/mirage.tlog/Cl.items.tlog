@@ -1,4 +1,8 @@
+C:\Users\flora\ext\glad\src\glad.c;C:\Users\flora\dev\mirage\mirage\x64\Debug\glad.obj
 C:\Users\flora\dev\mirage\mirage\main.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\main.obj
 C:\Users\flora\dev\mirage\mirage\main_test.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\main_test.obj
 C:\Users\flora\dev\mirage\mirage\stringprintf.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\stringprintf.obj
+C:\Users\flora\dev\mirage\mirage\texture_renderer.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\texture_renderer.obj
+C:\Users\flora\dev\mirage\mirage\triangle_p0.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\triangle_p0.obj
 C:\Users\flora\dev\mirage\mirage\vecmath_test.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\vecmath_test.obj
+C:\Users\flora\dev\mirage\mirage\window.cpp;C:\Users\flora\dev\mirage\mirage\x64\Debug\window.obj
